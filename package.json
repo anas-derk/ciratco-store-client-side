@@ -1,11 +1,11 @@
 {
-  "name": "ubuyblues-store-webiste-client-side",
+  "name": "ciratco-store-webiste-client-side",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 5100",
+    "start": "next start -p 5800",
     "lint": "next lint"
   },
   "dependencies": {
