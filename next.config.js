@@ -6,7 +6,7 @@ const nextConfig = {
         removeConsole: process.env.NODE_ENV === "production",
     },
     env: {
-        BASE_API_URL: process.env.NODE_ENV === "development" ? "http://localhost:6000" : "https://api.ciratco.com",
+        BASE_API_URL: process.env.NODE_ENV === "development" ? "http://localhost:6100" : "https://api.ciratco.com",
         WEBSITE_URL: process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://ciratco.com",
         USER_TOKEN_NAME_IN_LOCAL_STORAGE: "c-s-u-t",
         STORE_NAME: "Ciratco Store",
@@ -28,7 +28,7 @@ const nextConfig = {
     async headers() {
         return [
             {
-                source: process.env.NODE_ENV === "development" ? "//localhost:6000/(.*)" : "//api.ciratco.com/(.*)",
+                source: process.env.NODE_ENV === "development" ? "//localhost:6100/(.*)" : "//api.ciratco.com/(.*)",
                 headers: [
                     { key: "Access-Control-Allow-Credentials", value: "true" },
                     {
