@@ -100,7 +100,7 @@ export default function Header() {
         const newLightMode = lightMode == "sunny" ? "dark" : "sunny";
         setLightMode(newLightMode);
         let rootElement = document.documentElement;
-        rootElement.style.setProperty("--main-color-one", newLightMode === "sunny" ? "#6A017A" : "#000");
+        rootElement.style.setProperty("--main-color-one", newLightMode === "sunny" ? "#1b405a" : "#000");
         localStorage.setItem(process.env.USER_THEME_MODE_FIELD_NAME_IN_LOCAL_STORAGE, newLightMode);
     }
 
