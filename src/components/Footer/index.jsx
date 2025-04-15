@@ -129,14 +129,14 @@ export default function Footer() {
                                 <FaXTwitter className={`${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
                                 <Link href={process.env.X_LINK} target="_blank" className="text-dark link-btn">{t("x").toUpperCase()}</Link>
                             </li>
-                            <li className="link-item fw-bold mb-3">
+                            {/* <li className="link-item fw-bold mb-3">
                                 <FaTiktok className={`${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
                                 <Link href={process.env.TIKTOK_LINK} target="_blank" className="text-dark link-btn">{t("Tiktok").toUpperCase()}</Link>
                             </li>
                             <li className="link-item fw-bold mb-3">
                                 <MdEmail className={`${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
                                 <Link href={`mailto:${process.env.CONTACT_EMAIL}`} className="text-dark link-btn">{t("Email").toUpperCase()}</Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </motion.div>
                     <motion.div
