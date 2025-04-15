@@ -1,5 +1,6 @@
 .product-card .flash-discount-description .flash-icon {
   font-size: 35px;
+  color: #FFF;
 }
 
 .product-card .flash-discount-description h6, .product-card .flash-discount-description .remaining-time, .product-card .flash-discount-description button {
@@ -12,6 +13,7 @@
 
 .product-card .flash-discount-description .remaining-time, .product-card .flash-discount-description button {
   font-size: 12px;
+  color: #FFF;
 }
 
 .product-card .product-managment-box .sale-box {
