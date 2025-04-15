@@ -28,7 +28,7 @@ import "../components/ThreeDImageViewer/three_d_image_viewer.css";
 export default function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <GoogleOAuthProvider clientId={"474293828709-lose15l4kuf529gb9hu85or53b33vv8s.apps.googleusercontent.com"}>
+      <GoogleOAuthProvider clientId={"279558527722-q96dr1ggecvksd373ssetqit3sl9e5sc.apps.googleusercontent.com"}>
         <Component {...pageProps} />
       </GoogleOAuthProvider>
     </Provider>
