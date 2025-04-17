@@ -2,22 +2,22 @@ import axios from "axios";
 
 const getUSDPriceAgainstCurrency = async (country) => {
     try {
-        // if(process.env.NODE_ENV === "development" || process.env.NODE_ENV === "production") {
-        //     switch (country) {
-        //         case "kuwait": {
-        //             return 0.31;
-        //         }
-        //         case "germany": {
-        //             return 0.83;
-        //         }
-        //         case "turkey": {
-        //             return 32;
-        //         }
-        //         default: {
-        //             throw Error("Sorry, Invalid Country !!");
-        //         }
-        //     }
-        // }
+        if (process.env.NODE_ENV === "development") {
+            switch (country) {
+                case "kuwait": {
+                    return 0.31;
+                }
+                case "germany": {
+                    return 0.83;
+                }
+                case "turkey": {
+                    return 32;
+                }
+                default: {
+                    throw Error("Sorry, Invalid Country !!");
+                }
+            }
+        }
         switch (country) {
             case "kuwait": {
                 return (await axios.get(`${process.env.BASE_API_URL}/currency-exchange-rates/currency-rate-agaist-usd?currencySymbol=KWD`)).data.data;
