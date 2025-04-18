@@ -83,8 +83,6 @@ export default function Checkout({ countryAsProperty, storeId }) {
 
     const [isAgreeOnTermsAndConditions, setIsAgreeOnTermsAndConditions] = useState(false);
 
-    const [orderResult, setOrderResult] = useState({});
-
     const countryList = Object.values(countries);
 
     const router = useRouter();
@@ -105,7 +103,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                 setIsLoadingPage(false);
             }
         })
-            .catch(() => {
+            .catch((err) => {
                 setIsLoadingPage(false);
                 setErrorMsgOnLoadingThePage(err?.message === "Network Error" ? "Network Error" : "Sorry, Something Went Wrong, Please Try Again !");
             });
@@ -117,7 +115,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                 if (!result.error) {
                     if (result.data?.status === "approving") {
                         setStoreDetails(result.data);
-                        const tempAllProductsDataInsideTheCart = JSON.parse(localStorage.getItem(process.env.userCartNameInLocalStorage));
+                        const tempAllProductsDataInsideTheCart = JSON.parse(localStorage.getItem(process.env.USER_CART_NAME_IN_LOCAL_STORAGE));
                         if (Array.isArray(tempAllProductsDataInsideTheCart)) {
                             if (tempAllProductsDataInsideTheCart.length > 0) {
                                 result = await getProductsByIdsAndStoreId(storeId, tempAllProductsDataInsideTheCart.map((product) => product._id));
@@ -133,12 +131,12 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                     const tempShippingCost = getShippingCost(localAndInternationlProductsTemp.local.length, localAndInternationlProductsTemp.international.length, shippingMethod, totalPrices.totalPriceAfterDiscount);
                                     setShippingCost(tempShippingCost);
                                     setTotalAmount(totalPrices.totalPriceAfterDiscount + tempShippingCost.forLocalProducts + tempShippingCost.forInternationalProducts + 0);
-                                    setIsGetUserInfo(false);
                                 }
                             }
                         }
                     }
                 }
+                setIsGetUserInfo(false);
                 setIsGetStoreDetails(false);
             })
             .catch((err) => {
@@ -1136,22 +1134,6 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 </div>
                                                 <div className="col-md-6 text-md-end">
                                                     <FaCcPaypal className="payment-icon paypal-icon" />
-                                                </div>
-                                            </motion.div>
-                                            <motion.div className={`row align-items-center pt-3 ${paymentGateway === "paypal" ? "mb-3" : ""}`} initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
-                                                <div className="col-md-6 text-start">
-                                                    <input
-                                                        type="radio"
-                                                        checked={paymentGateway === "paypal"}
-                                                        id="tap-radio"
-                                                        className={`radio-input ${i18n.language !== "ar" ? "me-2" : "ms-2"}`}
-                                                        name="radioGroup"
-                                                        onChange={() => setPaymentGateway("paypal")}
-                                                    />
-                                                    <label htmlFor="tap-radio" onClick={() => setPaymentGateway("paypal")}>{t("Paypal")}</label>
-                                                </div>
-                                                <div className="col-md-6 text-md-end">
-                                                    <FaTape className="payment-icon tap-icon" />
                                                 </div>
                                             </motion.div>
                                         </section>
