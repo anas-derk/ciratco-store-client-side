@@ -59,7 +59,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
 
     const [couponCode, setCouponCode] = useState("");
 
-    const [paymentGateway, setPaymentGateway] = useState("tap");
+    const [paymentGateway, setPaymentGateway] = useState("paypal");
 
     const [shippingMethod, setShippingMethod] = useState({ forLocalProducts: "ubuyblues", forInternationalProducts: "normal" });
 
