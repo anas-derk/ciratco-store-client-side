@@ -45,6 +45,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
             }
         })
             .catch((err) => {
+                console.log(err);
                 setIsLoadingPage(false);
                 setErrorMsgOnLoadingThePage(err?.message === "Network Error" ? "Network Error" : "Sorry, Something Went Wrong, Please Try Again !");
             });
@@ -61,6 +62,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
                     setIsGetUserInfo(false);
                 })
                 .catch((err) => {
+                    console.log(err);
                     if (err?.response?.status === 401) {
                         localStorage.removeItem(process.env.USER_TOKEN_NAME_IN_LOCAL_STORAGE);
                         setIsGetUserInfo(false);
@@ -87,6 +89,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
                 }
             })
             .catch((err) => {
+                console.log(err);
                 setIsLoadingPage(false);
                 setErrorMsgOnLoadingThePage(err?.message === "Network Error" ? "Network Error" : "Sorry, Something Went Wrong, Please Try Again !");
             });
