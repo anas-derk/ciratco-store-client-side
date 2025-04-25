@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Header from "@/components/Header";
 import { useEffect, useState } from "react";
-import { FaLongArrowAltRight } from "react-icons/fa";
+import { FaLongArrowAltRight, FaLongArrowAltLeft } from "react-icons/fa";
 import axios from "axios";
 import { useRouter } from "next/router";
 import LoaderPage from "@/components/LoaderPage";
@@ -235,8 +235,11 @@ export default function AccountVerification({ email }) {
                                     <span className="text-danger email-box">{email}</span>
                                 </motion.h6>
                                 <motion.h6 className="mb-3 fw-bold" initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
-                                    <FaLongArrowAltRight className="me-2" />
-                                    <span className="text-danger fw-bold">{t("Enter code Here")} *</span>
+                                        {i18n.language !== "ar" ? <FaLongArrowAltRight className="me-2" /> : <FaLongArrowAltLeft className="ms-2" />}
+                                        <span className="text-danger fw-bold">{t("Enter code Here")} *</span>
+                                    {i18n.language !== "ar" ? <>
+                                    </> : <>
+                                    </>}
                                 </motion.h6>
                                 <motion.form className="code-write-form d-flex mb-4" dir="ltr" onSubmit={checkAccountVerificationCode} initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
                                     {
