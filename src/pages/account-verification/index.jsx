@@ -224,12 +224,10 @@ export default function AccountVerification({ email }) {
                                 <div className="row">
                                     <motion.div className="col-md-5" initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
                                         <h6 className="mb-3 fw-bold">{t("You're almost done!")}</h6>
-                                    </motion.div>
-                                    <motion.div className="col-md-7 text-xl-end" initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
                                         <h6 className="mb-3 fw-bold">
                                             {t("You can redial the message after")}
                                         </h6>
-                                        <h6 className="mb-3 fw-bold">{minutes} : {seconds}</h6>
+                                        {i18n.language !== "ar" ? <h6 className="mb-3 fw-bold">{minutes} : {seconds}</h6> : <h6 className="mb-3 fw-bold">{seconds} : {minutes}</h6>}
                                     </motion.div>
                                 </div>
                                 <motion.h6 className="mb-3 fw-bold" initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
