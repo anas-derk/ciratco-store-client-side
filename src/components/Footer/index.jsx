@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { FaLongArrowAltRight, FaLongArrowAltLeft, FaCcPaypal, FaInstagram, FaTiktok } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
 import { LiaCcVisa } from "react-icons/lia";
 import { FaCcMastercard } from "react-icons/fa";
 import KnetLogo from "../../../public/images/knet-logo.png";

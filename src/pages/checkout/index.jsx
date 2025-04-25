@@ -70,8 +70,6 @@ export default function Checkout({ countryAsProperty, storeId }) {
 
     const [isWaitApplyCoupon, setIsWaitApplyCoupon] = useState(false);
 
-    const [isWaitApproveOnPayPalOrder, setIsWaitApproveOnPayPalOrder] = useState(false);
-
     const [isWaitCreateNewOrder, setIsWaitCreateNewOrder] = useState(false);
 
     const [errorMsg, setErrorMsg] = useState("");
@@ -97,7 +95,8 @@ export default function Checkout({ countryAsProperty, storeId }) {
         setIsLoadingPage(true);
         getUSDPriceAgainstCurrency(countryAsProperty).then((price) => {
             setUsdPriceAgainstCurrency(price);
-            setCurrencyNameByCountry(getCurrencyNameByCountry(countryAsProperty));
+            const selectedCountry = localStorage.getItem(process.env.SELECTED_COUNTRY_BY_USER);
+            setCurrencyNameByCountry(getCurrencyNameByCountry(countryAsProperty === selectedCountry ? countryAsProperty : selectedCountry ));
             if (!isGetUserInfo && !isGetStoreDetails) {
                 setIsLoadingPage(false);
             }
@@ -604,10 +603,6 @@ export default function Checkout({ countryAsProperty, storeId }) {
                 <title>{t(process.env.STORE_NAME)} - {t("Checkout")}</title>
             </Head>
             {!isLoadingPage && !errorMsgOnLoadingThePage && <>
-                {isWaitApproveOnPayPalOrder && <div className="overlay text-white d-flex flex-column align-items-center justify-content-center">
-                    <span class="loader mb-4"></span>
-                    <p>{t("Please Wait")} ...</p>
-                </div>}
                 <Header />
                 <div className="page-content pt-5">
                     <div className="container-fluid text-white p-4">
