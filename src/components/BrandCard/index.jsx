@@ -1,11 +1,6 @@
-import { useTranslation } from "react-i18next";
-
 export default function BrandCard({
     brandDetails,
 }) {
-
-    const { i18n } = useTranslation();
-
     return (
         <div className="brand-card card-box">
             <div
