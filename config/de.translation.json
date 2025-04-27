@@ -630,5 +630,10 @@
     "Confirm Delete All": "Löschen aller bestätigen",
     "Delete All Favorite Products": "Alle Lieblingsprodukte löschen",
     "Delete All Wallet Products": "Alle Wallet-Produkte löschen",
-    "Wallet Products": "Wallet-Produkte"
+    "Wallet Products": "Wallet-Produkte",
+    "Shipping Notes": "Versandhinweise",
+    "From 1 To 29.99": "Von 1 bis 29,99",
+    "Euros": "Euro",
+    "From 30 Euros And Up": "Ab 30 Euro und mehr",
+    "Orders Placed Before 1:00 PM (13:00) Will Be Shipped The Same Day": "Bestellungen, die vor 13:00 Uhr aufgegeben werden, werden am selben Tag versendet"
 }

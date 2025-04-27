@@ -630,5 +630,10 @@
     "Confirm Delete All": "Tümünü silmeyi onayla",
     "Delete All Favorite Products": "Tüm favori ürünleri sil",
     "Delete All Wallet Products": "Tüm cüzdan ürünlerini sil",
-    "Wallet Products": "Cüzdan ürünleri"
+    "Wallet Products": "Cüzdan ürünleri",
+    "Shipping Notes": "Nakliye Notları",
+    "From 1 To 29.99": "1 ile 29,99 arası",
+    "Euros": "Euro",
+    "From 30 Euros And Up": "30 Euro ve üzeri",
+    "Orders Placed Before 1:00 PM (13:00) Will Be Shipped The Same Day": "Saat 13:00'ten (1:00 PM) önce verilen siparişler aynı gün kargolanır"
 }
