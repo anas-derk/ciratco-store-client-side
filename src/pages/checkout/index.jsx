@@ -81,6 +81,17 @@ export default function Checkout({ countryAsProperty, storeId }) {
 
     const countryList = Object.values(countries);
 
+    const paymentMethods = [
+        {
+            name: "paypal",
+            cards: ["paypal", "visa", "master"]
+        },
+        {
+            name: "stripe",
+            cards: ["stripe", "visa", "master"]
+        }
+    ];
+
     const router = useRouter();
 
     const { t, i18n } = useTranslation();
@@ -95,7 +106,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
         getUSDPriceAgainstCurrency(countryAsProperty).then((price) => {
             setUsdPriceAgainstCurrency(price);
             const selectedCountry = localStorage.getItem(process.env.SELECTED_COUNTRY_BY_USER);
-            setCurrencyNameByCountry(getCurrencyNameByCountry(countryAsProperty === selectedCountry ? countryAsProperty : (selectedCountry ?? countryAsProperty ) ));
+            setCurrencyNameByCountry(getCurrencyNameByCountry(countryAsProperty === selectedCountry ? countryAsProperty : (selectedCountry ?? countryAsProperty)));
             if (!isGetUserInfo && !isGetStoreDetails) {
                 setIsLoadingPage(false);
             }
@@ -1040,24 +1051,31 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                         {/* Start Payement Methods Section */}
                                         <section className="payment-methods mb-4 border border-2 p-3 mb-4">
                                             <motion.h6 className={`fw-bold mb-4 text-center bg-white text-dark p-3`} initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>{t("Payment Methods")}</motion.h6>
-                                            {["paypal", "stripe"].map((paymentMethod, paymentMethodIndex) => (
-                                                <motion.div key={paymentMethodIndex} className={`row align-items-center pt-3 ${paymentGateway === paymentMethod ? "mb-3" : ""}`} initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
-                                                <div className="col-md-6 text-start">
-                                                    <input
-                                                        type="radio"
-                                                        checked={paymentGateway === paymentMethod}
-                                                        id={`${paymentMethod}-radio`}
-                                                        className={`radio-input ${i18n.language !== "ar" ? "me-2" : "ms-2"}`}
-                                                        name="radioGroup"
-                                                        onChange={() => setPaymentGateway(paymentMethod)}
-                                                    />
-                                                    <label htmlFor={`${paymentMethod}-radio`} onClick={() => setPaymentGateway(paymentMethod)}>{t(paymentMethod)}</label>
-                                                </div>
-                                                <div className="col-md-6 text-md-end">
-                                                    {paymentMethod === "paypal" && <FaCcPaypal className={`payment-icon ${paymentMethod}-icon`} />}
-                                                    {paymentMethod === "stripe" && <FaCcStripe className={`payment-icon ${paymentMethod}-icon`} />}
-                                                </div>
-                                            </motion.div>
+                                            {paymentMethods.map((paymentMethod, paymentMethodIndex) => (
+                                                <motion.div key={paymentMethodIndex} className={`row align-items-center border border-2 border-white pt-3 pb-3 m-2 ${paymentGateway === paymentMethod.name ? "mb-3" : ""}`} initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
+                                                    <div className={`col-md-6 ${i18n.language !== "ar" ? "text-start" : "text-end"}`}>
+                                                        <input
+                                                            type="radio"
+                                                            checked={paymentGateway === paymentMethod.name}
+                                                            id={`${paymentMethod}-radio`}
+                                                            className={`radio-input ${i18n.language !== "ar" ? "me-2" : "ms-2"}`}
+                                                            name="radioGroup"
+                                                            onChange={() => setPaymentGateway(paymentMethod.name)}
+                                                        />
+                                                        <label htmlFor={`${paymentMethod.name}-radio`} onClick={() => setPaymentGateway(paymentMethod.name)}>{t(paymentMethod.name)}</label>
+                                                    </div>
+                                                    <div className={`col-md-6 ${i18n.language !== "ar" ? "text-end" : "text-start"}`}>
+                                                        {paymentMethod.name === "paypal" && <FaCcPaypal className={`payment-icon ${paymentMethod.name}-icon`} />}
+                                                        {paymentMethod.name === "stripe" && <FaCcStripe className={`payment-icon ${paymentMethod.name}-icon`} />}
+                                                    </div>
+                                                    <hr className="mt-2 mb-2" />
+                                                    <div className="cards-available text-center">
+                                                        <motion.h6 className={`fw-bold mb-4 text-center bg-white text-dark p-3`} initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>{t("Cards")}</motion.h6>
+                                                        {paymentMethod.cards.map((card, cardIndex) => (
+                                                            <FaCcPaypal key={cardIndex} className={`payment-icon ${card}-icon me-3`} />
+                                                        ))}
+                                                    </div>
+                                                </motion.div>
                                             ))}
                                         </section>
                                         {/* End Payement Methods Section */}
