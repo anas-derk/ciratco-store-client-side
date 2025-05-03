@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { FaLongArrowAltRight, FaLongArrowAltLeft, FaCcPaypal, FaInstagram, FaTiktok, FaGooglePay } from "react-icons/fa";
 import { LiaCcVisa } from "react-icons/lia";
 import { FaCcMastercard } from "react-icons/fa";
-import TabbyLogo from "../../../public/images/tabby-logo.png";
+import SepaLogo from "../../../public/images/Sepa.png";
 import { IoLogoFacebook } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import axios from "axios";
@@ -180,8 +180,8 @@ export default function Footer() {
                                 </li>
                             ))}
                             <li className="payment-method-item fw-bold mb-3">
-                                <img src={TabbyLogo.src} alt="Tabby Logo" className={`icon-as-image tabby-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
-                                <span>{t("Tabby")}</span>
+                                <img src={SepaLogo.src} alt="Sepa Logo" className={`icon-as-image sepa-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
+                                <span>{t("Sepa")}</span>
                             </li>
                         </ul>
                     </motion.div>
