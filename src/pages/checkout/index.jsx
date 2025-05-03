@@ -5,18 +5,20 @@ import LoaderPage from "@/components/LoaderPage";
 import axios from "axios";
 import { useRouter } from "next/router";
 import ErrorOnLoadingThePage from "@/components/ErrorOnLoadingThePage";
-import { countries, getCountryCode } from 'countries-list';
-import { FaCcPaypal, FaCcStripe } from "react-icons/fa";
+import { countries, getCountryCode } from "countries-list";
+import { FaCcMastercard, FaCcPaypal, FaCcStripe, FaGooglePay } from "react-icons/fa";
 import { parsePhoneNumber } from "libphonenumber-js";
 import { useTranslation } from "react-i18next";
 import Footer from "@/components/Footer";
 import NotFoundError from "@/components/NotFoundError";
-import { getStoreDetails, getProductQuantity, calcTotalPrices, isExistOfferOnProduct, getUserInfo, handleSelectUserLanguage, getAppearedSections, getInitialStateForElementBeforeAnimation, getAnimationSettings } from "../../../public/global_functions/popular";
+import { getStoreDetails, getProductQuantity, calcTotalPrices, getUserInfo, handleSelectUserLanguage, getInitialStateForElementBeforeAnimation, getAnimationSettings } from "../../../public/global_functions/popular";
 import { getCurrencyNameByCountry, getUSDPriceAgainstCurrency } from "../../../public/global_functions/prices";
 import { inputValuesValidation } from "../../../public/global_functions/validations";
 import Link from "next/link";
 import { motion } from "motion/react";
 import FormFieldErrorBox from "@/components/FormFieldErrorBox";
+import { LiaCcVisa } from "react-icons/lia";
+import { SiApplepay } from "react-icons/si";
 
 export default function Checkout({ countryAsProperty, storeId }) {
 
@@ -84,11 +86,29 @@ export default function Checkout({ countryAsProperty, storeId }) {
     const paymentMethods = [
         {
             name: "paypal",
-            cards: ["paypal", "visa", "master"]
+            icon: <FaCcPaypal className={`payment-icon paypal-icon me-3`} />,
+            cards: [],
         },
         {
             name: "stripe",
-            cards: ["stripe", "visa", "master"]
+            cards: [
+                {
+                    name: "Visa Card",
+                    icon: <LiaCcVisa className={`payment-icon visa-card-icon me-3`} />
+                },
+                {
+                    name: "Master Card",
+                    icon: <FaCcMastercard className={`payment-icon master-card-icon me-3`} />
+                },
+                {
+                    name: "Google Pay Card",
+                    icon: <FaGooglePay className={`payment-icon google-pay-card-icon me-3`} />
+                },
+                {
+                    name: "Apple Pay Card",
+                    icon: <SiApplepay className={`payment-icon apple-pay-card-icon me-3`} />
+                },
+            ],
         }
     ];
 
@@ -1068,13 +1088,13 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                         {paymentMethod.name === "paypal" && <FaCcPaypal className={`payment-icon ${paymentMethod.name}-icon`} />}
                                                         {paymentMethod.name === "stripe" && <FaCcStripe className={`payment-icon ${paymentMethod.name}-icon`} />}
                                                     </div>
-                                                    <hr className="mt-2 mb-2" />
-                                                    <div className="cards-available text-center">
-                                                        <motion.h6 className={`fw-bold mb-4 text-center bg-white text-dark p-3`} initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>{t("Cards")}</motion.h6>
-                                                        {paymentMethod.cards.map((card, cardIndex) => (
-                                                            <FaCcPaypal key={cardIndex} className={`payment-icon ${card}-icon me-3`} />
-                                                        ))}
-                                                    </div>
+                                                    {paymentMethod.cards.length > 0 && <>
+                                                        <hr className="mt-2 mb-2" />
+                                                        <div className="available-cards text-center">
+                                                            <motion.h6 className={`fw-bold mb-4 text-center bg-white text-dark p-3`} initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>{t("Available Cards")}</motion.h6>
+                                                            {paymentMethod.cards.map((card) => card.icon)}
+                                                        </div>
+                                                    </>}
                                                 </motion.div>
                                             ))}
                                         </section>

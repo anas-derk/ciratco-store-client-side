@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
-import { FaLongArrowAltRight, FaLongArrowAltLeft, FaCcPaypal, FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaLongArrowAltRight, FaLongArrowAltLeft, FaCcPaypal, FaInstagram, FaTiktok, FaGooglePay } from "react-icons/fa";
 import { LiaCcVisa } from "react-icons/lia";
 import { FaCcMastercard } from "react-icons/fa";
-import KnetLogo from "../../../public/images/knet-logo.png";
 import TabbyLogo from "../../../public/images/tabby-logo.png";
 import { IoLogoFacebook } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import axios from "axios";
 import { getAnimationSettings, getInitialStateForElementBeforeAnimation, handleSelectUserLanguage } from "../../../public/global_functions/popular";
 import { motion } from "motion/react";
+import { SiApplepay } from "react-icons/si";
 
 export default function Footer() {
 
@@ -23,6 +23,29 @@ export default function Footer() {
     const [successMsg, setSuccessMsg] = useState("");
 
     const { i18n, t } = useTranslation();
+
+    const paymentMethods = [
+        {
+            name: "Paypal",
+            icon: <FaCcPaypal className={`icon paypal-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
+        },
+        {
+            name: "Visa Card",
+            icon: <LiaCcVisa className={`icon visa-card-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
+        },
+        {
+            name: "Master Card",
+            icon: <FaCcMastercard className={`icon master-card-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
+        },
+        {
+            name: "Google Pay Card",
+            icon: <FaGooglePay className={`icon google-pay-card-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
+        },
+        {
+            name: "Apply Pay Card",
+            icon: <SiApplepay className={`icon apple-pay-card-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
+        }
+    ];
 
     useEffect(() => {
         const userLanguage = localStorage.getItem(process.env.USER_LANGUAGE_FIELD_NAME_IN_LOCAL_STORAGE);
@@ -124,10 +147,6 @@ export default function Footer() {
                                 <FaInstagram className={`${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
                                 <Link href={process.env.INSTAGRAM_LINK} target="_blank" className="text-dark link-btn">{t("Instagram").toUpperCase()}</Link>
                             </li>
-                            {/* <li className="link-item fw-bold mb-3">
-                                <FaXTwitter className={`${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
-                                <Link href={process.env.X_LINK} target="_blank" className="text-dark link-btn">{t("x").toUpperCase()}</Link>
-                            </li> */}
                             <li className="link-item fw-bold mb-3">
                                 <FaTiktok className={`${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
                                 <Link href={process.env.TIKTOK_LINK} target="_blank" className="text-dark link-btn">{t("Tiktok").toUpperCase()}</Link>
@@ -154,22 +173,12 @@ export default function Footer() {
                         <ul
                             className="payment-methods-list mb-5"
                         >
-                            <li className="payment-method-item fw-bold mb-3">
-                                <FaCcPaypal className={`icon paypal-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
-                                <span>{t("PayPal")}</span>
-                            </li>
-                            <li className="payment-method-item fw-bold mb-3">
-                                <LiaCcVisa className={`icon visa-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
-                                <span>{t("Visa Card")}</span>
-                            </li>
-                            <li className="payment-method-item fw-bold mb-3">
-                                <FaCcMastercard className={`icon visa-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
-                                <span>{t("Master Card")}</span>
-                            </li>
-                            <li className="payment-method-item fw-bold mb-3">
-                                <img src={KnetLogo.src} alt="Knet Logo" className={`icon-as-image knet-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
-                                <span>{t("Knet")}</span>
-                            </li>
+                            {paymentMethods.map((method) => (
+                                <li className="payment-method-item fw-bold mb-3">
+                                    {method.icon}
+                                    <span>{t(method.name)}</span>
+                                </li>
+                            ))}
                             <li className="payment-method-item fw-bold mb-3">
                                 <img src={TabbyLogo.src} alt="Tabby Logo" className={`icon-as-image tabby-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
                                 <span>{t("Tabby")}</span>

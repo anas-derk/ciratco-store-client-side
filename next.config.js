@@ -20,7 +20,6 @@ const nextConfig = {
         CONTACT_EMAIL: "info@ciratco.com",
         FACEBOOK_LINK: "https://www.facebook.com/ciratco?mibextid=kFxxJD",
         INSTAGRAM_LINK: "https://www.instagram.com/ciratco",
-        // X_LINK: "https://x.com/ubuyblues",
         TIKTOK_LINK: "https://www.tiktok.com/@cirat.co?_t=8oZFsy0KQ2z&_r=1",
         WEBSITE_NAME: "Ciratco",
         WEBSITE_DASHBOARD_URL: process.env.NODE_ENV === "development" ? "http://localhost:3001" : "https://dashboard.ciratco.com",
