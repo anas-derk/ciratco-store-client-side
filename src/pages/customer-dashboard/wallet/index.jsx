@@ -281,7 +281,6 @@ export default function CustomerWalletProductsList({ countryAsProperty }) {
                                             <tr>
                                                 <th>{t("Product")}</th>
                                                 <th>{t("Unit Price")}</th>
-                                                <th>{t("Stock Status")}</th>
                                                 <th>{t("Action")}</th>
                                             </tr>
                                         </motion.thead>
@@ -299,7 +298,6 @@ export default function CustomerWalletProductsList({ countryAsProperty }) {
                                                         <h6>{walletProduct.name[i18n.language]}</h6>
                                                     </td>
                                                     <td>{(walletProduct.price * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}</td>
-                                                    <td>{t("Stock Status")}</td>
                                                     <td>
                                                         {!waitMsg && selectedWalletProduct !== walletProductIndex && <BsTrash className="delete-product-from-wallet-user-list-icon managment-wallet-products-icon" onClick={() => deleteProductFromUserProductsWallet(walletProductIndex)} />}
                                                         {waitMsg && selectedWalletProduct === walletProductIndex && <BsClock className="wait-delete-product-from-wallet-user-list-icon managment-wallet-products-icon" />}
@@ -328,16 +326,12 @@ export default function CustomerWalletProductsList({ countryAsProperty }) {
                                                                     width="100"
                                                                     height="100"
                                                                 />
-                                                                <h6>{walletProduct.name}</h6>
+                                                                <h6>{walletProduct.name[i18n.language]}</h6>
                                                             </td>
                                                         </motion.tr>
                                                         <motion.tr initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
                                                             <th>{t("Unit Price")}</th>
                                                             <td>{(walletProduct.price * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}</td>
-                                                        </motion.tr>
-                                                        <motion.tr initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
-                                                            <th>{t("Stock Status")}</th>
-                                                            <td>{t("Stock Status")}</td>
                                                         </motion.tr>
                                                         <motion.tr initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
                                                             <th>{t("Action")}</th>

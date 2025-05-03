@@ -3,13 +3,13 @@
 }
 
 @media (max-width: 991px) {
-  .checkout .page-content .container-fluid > .row {
+  .checkout .page-content .container-fluid>.row {
     gap: 30px;
   }
 }
 
 @media (max-width: 767px) {
-  .checkout .page-content .container-fluid > .row .first-and-last-name .row > div:first-of-type {
+  .checkout .page-content .container-fluid>.row .first-and-last-name .row>div:first-of-type {
     margin-bottom: 1.5rem;
   }
 }
@@ -18,6 +18,7 @@
   .checkout .page-content .container-fluid .payment-methods .row {
     gap: 10px;
   }
+
   .checkout .page-content .container-fluid .payment-methods .row .checkout-link {
     width: 90% !important;
   }

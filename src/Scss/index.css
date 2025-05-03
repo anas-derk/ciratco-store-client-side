@@ -37,6 +37,12 @@ a {
 input,
 textarea,
 select,
+button,
+table,
+table tr,
+table td,
+.private-btn,
+.managment-links-side-bar,
 .card-box,
 .show-btn {
   border: 4px solid var(--main-color-five) !important;
@@ -94,7 +100,6 @@ textarea {
 
 .private-btn {
   border-top-right-radius: 20px;
-  border: 5px solid #FFF;
   background-color: var(--main-color-two);
   font-size: 13px;
 }
@@ -363,7 +368,7 @@ textarea {
 }
 
 .order-total .total {
-  border-bottom: 2px dashed #FFF;
+  border-bottom: 3px dashed var(--main-color-five);
 }
 
 @media (max-width: 767px) {
@@ -471,14 +476,14 @@ textarea {
   border-radius: 5px;
 }
 
-.managment-links-side-bar .managment-link-list .managment-link-item:hover,
-.managment-links-side-bar .managment-link-list .managment-link-item .active {
-  background-color: var(--main-color-two);
-  border-radius: 5px;
-}
-
 .managment-links-side-bar .managment-link-list .managment-link-item .managment-link {
   padding: 14px;
+}
+
+.managment-links-side-bar .managment-link-list .managment-link-item .managment-link:hover,
+.managment-links-side-bar .managment-link-list .managment-link-item .managment-link .active {
+  background-color: var(--main-color-one);
+  color: #FFF !important;
 }
 
 .managment-links-side-bar .managment-link-list .managment-link-item .managment-link .managment-link-icon {

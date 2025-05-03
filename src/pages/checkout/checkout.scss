@@ -1,16 +1,18 @@
-.checkout{
-    .page-content{
-        .container-fluid{
-            h6{
+.checkout {
+    .page-content {
+        .container-fluid {
+            h6 {
                 font-size: 14px;
             }
-            > .row{
+
+            >.row {
                 @media (max-width: 991px) {
                     gap: 30px;
                 }
-                .first-and-last-name{
-                    .row{
-                        > div:first-of-type{
+
+                .first-and-last-name {
+                    .row {
+                        >div:first-of-type {
                             @media (max-width: 767px) {
                                 margin-bottom: 1.5rem;
                             }
@@ -18,27 +20,33 @@
                     }
                 }
             }
-            .payment-methods{
-                .row{
+
+            .payment-methods {
+                .row {
                     @media (max-width: 767px) {
                         gap: 10px;
-                        .checkout-link{
+
+                        .checkout-link {
                             width: 90% !important;
                         }
                     }
                 }
             }
-            .order-total{
+
+            .order-total {
                 font-size: 13px;
             }
         }
-        label{
+
+        label {
             font-size: 14px;
         }
-        .radio-input{
+
+        .radio-input {
             width: fit-content;
         }
-        .payment-icon{
+
+        .payment-icon {
             font-size: 40px;
         }
     }

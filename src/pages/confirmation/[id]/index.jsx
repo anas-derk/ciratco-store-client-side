@@ -40,7 +40,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
         getUSDPriceAgainstCurrency(countryAsProperty).then((price) => {
             setUsdPriceAgainstCurrency(price);
             const selectedCountry = localStorage.getItem(process.env.SELECTED_COUNTRY_BY_USER);
-            setCurrencyNameByCountry(getCurrencyNameByCountry(countryAsProperty === selectedCountry ? countryAsProperty : (selectedCountry ?? countryAsProperty ) ));
+            setCurrencyNameByCountry(getCurrencyNameByCountry(countryAsProperty === selectedCountry ? countryAsProperty : (selectedCountry ?? countryAsProperty)));
             if (!isGetUserInfo && !isGetOrderDetails) {
                 setIsLoadingPage(false);
             }
@@ -109,16 +109,16 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
                 <div className="page-content page pt-5">
                     <div className="container-fluid align-items-center pb-4 text-white">
                         <h1 className="welcome-msg text-center mb-5 h4">{t("Welcome To You In Payment Confirmation Page")}</h1>
-                        {Object.keys(orderDetails).length > 0 ? <section className="order-total border border-3 p-4 ps-md-5 pe-md-5 text-center" id="order-total">
+                        {Object.keys(orderDetails).length > 0 ? <section className="order-total  custom-frame p-4 ps-md-5 pe-md-5 text-center" id="order-total">
                             <h5 className="fw-bold mb-4 text-center">{t("Your Request")}</h5>
-                            <div className="order-id-and-number border border-white border-2 p-4 mb-5">
+                            <div className="order-id-and-number custom-frame p-4 mb-5">
                                 <h5 className="mb-4 text-center">{t("Order Id")} : {orderDetails._id}</h5>
                                 <h5 className="mb-4 text-center">{t("Order Number")} : {orderDetails.orderNumber}</h5>
                                 <h5 className="mb-4 text-center">{t("Store Id")} : {storeDetails._id}</h5>
                                 <h5 className="mb-4 text-center">{t("Store Name")} : {storeDetails.name[i18n.language]}</h5>
                                 <h5 className="mb-0 text-center">{t("Owner Full Name")} : {storeDetails.ownerFirstName} {storeDetails.ownerLastName}</h5>
                             </div>
-                            <h5 className="mb-5 text-center border border-white border-2 p-4">{t("Order Details")}</h5>
+                            <h5 className="mb-5 text-center  custom-frame p-4">{t("Order Details")}</h5>
                             <div className="row total pb-3 mb-5">
                                 <div className="col-md-3 fw-bold p-0">
                                     {t("Product Name And Quantity")}

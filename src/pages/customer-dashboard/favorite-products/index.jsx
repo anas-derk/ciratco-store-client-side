@@ -342,7 +342,7 @@ export default function CustomerFavoriteProductsList({ countryAsProperty }) {
                                                                     width="100"
                                                                     height="100"
                                                                 />
-                                                                <h6>{favoriteProduct.name}</h6>
+                                                                <h6>{favoriteProduct.name[i18n.language]}</h6>
                                                             </td>
                                                         </motion.tr>
                                                         <motion.tr initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>

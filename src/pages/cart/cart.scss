@@ -1,47 +1,46 @@
-.cart{
-    .products-by-store{
-        .store{
+.cart {
+    .products-by-store {
+        .store {
             border-bottom: 2px solid var(--main-color-two);
         }
     }
-    .products{
-        .user-products-table{
-            thead{
-                border-bottom: 2px solid #FFF;
-            }
-            th, td{
+
+    .products {
+        .user-products-table {
+
+            th,
+            td {
                 padding: 20px;
                 font-size: 13px;
             }
-            tbody{
-                tr{
-                    border-bottom: 2px dashed #FFF;
-                }
-            }
         }
-        .update-product-quantity-cell{
-            .update-product-quantity{
-                border: 1px solid #FFF;
+
+        .update-product-quantity-cell {
+            .update-product-quantity {
                 width: fit-content;
-                .update-product-icon{
+
+                .update-product-icon {
                     cursor: pointer;
                     font-size: 22px;
                     height: 25px;
                     border-radius: 2px;
-                    &:hover{
+
+                    &:hover {
                         background-color: #FFF;
                         color: #000;
                     }
                 }
             }
         }
-        .delete-product-cell{
-            .trash-icon{
+
+        .delete-product-cell {
+            .trash-icon {
                 cursor: pointer;
                 font-size: 20px;
             }
         }
-        .cart-total-btn-box{
+
+        .cart-total-btn-box {
             position: fixed;
             right: 0;
             bottom: 30px;
@@ -54,13 +53,15 @@
             font-size: 14px;
             font-weight: bold;
             border: 3px solid #FFF;
-            &:hover{
+
+            &:hover {
                 background-color: #000;
                 color: #FFF;
             }
         }
     }
-    .order-total{
+
+    .order-total {
         font-size: 12px;
         padding: 35px;
     }

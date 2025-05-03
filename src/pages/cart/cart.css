@@ -2,21 +2,13 @@
   border-bottom: 2px solid var(--main-color-two);
 }
 
-.cart .products .user-products-table thead {
-  border-bottom: 2px solid #FFF;
-}
-
-.cart .products .user-products-table th, .cart .products .user-products-table td {
+.cart .products .user-products-table th,
+.cart .products .user-products-table td {
   padding: 20px;
   font-size: 13px;
 }
 
-.cart .products .user-products-table tbody tr {
-  border-bottom: 2px dashed #FFF;
-}
-
 .cart .products .update-product-quantity-cell .update-product-quantity {
-  border: 1px solid #FFF;
   width: fit-content;
 }
 
