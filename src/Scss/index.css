@@ -33,6 +33,15 @@ a {
   text-decoration: none;
 }
 
+.custom-frame,
+input,
+textarea,
+select,
+.card-box,
+.show-btn {
+  border: 4px solid var(--main-color-five) !important;
+}
+
 input,
 textarea,
 select {
@@ -42,7 +51,6 @@ select {
   padding: 13px !important;
   width: 100%;
   font-size: 11px !important;
-  border: 4px solid #000 !important;
 }
 
 input::placeholder,
@@ -643,7 +651,6 @@ textarea {
 .card-box {
   margin: auto;
   height: auto;
-  border: 4px solid var(--main-color-five);
 }
 
 @media (min-width: 320px) and (max-width: 400px) {
@@ -850,17 +857,12 @@ textarea {
   font-weight: bold;
   font-size: 13px;
   padding: 13px 0;
-  border: 4px solid var(--main-color-five);
 }
 
 @media (max-width: 767px) {
   .show-btn {
     width: 100%;
   }
-}
-
-.custom-frame {
-  border: 2px solid var(--main-color-five);
 }
 
 @keyframes rotation {

@@ -23,7 +23,8 @@ const nextConfig = {
         TIKTOK_LINK: "https://www.tiktok.com/@cirat.co?_t=8oZFsy0KQ2z&_r=1",
         WEBSITE_NAME: "Ciratco",
         WEBSITE_DASHBOARD_URL: process.env.NODE_ENV === "development" ? "http://localhost:3001" : "https://dashboard.ciratco.com",
-        MAIN_COLOR_ONE: "#1b405a"
+        MAIN_COLOR_ONE: "#1b405a",
+        MAIN_COLOR_FIVE: "#000"
     },
     async headers() {
         return [

@@ -173,7 +173,7 @@ export default function Home({ countryAsProperty, storeId }) {
         getUSDPriceAgainstCurrency(countryAsProperty).then((price) => {
             setUsdPriceAgainstCurrency(price);
             const selectedCountry = localStorage.getItem(process.env.SELECTED_COUNTRY_BY_USER);
-            setCurrencyNameByCountry(getCurrencyNameByCountry(countryAsProperty === selectedCountry ? countryAsProperty : (selectedCountry ?? countryAsProperty ) ));
+            setCurrencyNameByCountry(getCurrencyNameByCountry(countryAsProperty === selectedCountry ? countryAsProperty : (selectedCountry ?? countryAsProperty)));
             if (!isGetStoreDetails) {
                 setIsLoadingPage(false);
             }
@@ -711,7 +711,7 @@ export default function Home({ countryAsProperty, storeId }) {
                 <div className={`page-content ${allTextAds.length === 0 && "pt-5"}`}>
                     {/* Start Text Ads Section */}
                     {allTextAds.length > 0 && <motion.section
-                        className="text-ads text-center p-3 bg-white fw-bold mb-5"
+                        className="text-ads text-center p-3 bg-white fw-bold mb-5 custom-frame"
                         initial={{
                             width: 0,
                         }}

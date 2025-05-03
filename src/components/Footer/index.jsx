@@ -42,7 +42,7 @@ export default function Footer() {
             icon: <FaGooglePay className={`icon google-pay-card-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
         },
         {
-            name: "Apply Pay Card",
+            name: "Apple Pay Card",
             icon: <SiApplepay className={`icon apple-pay-card-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
         }
     ];
@@ -85,7 +85,7 @@ export default function Footer() {
     }
 
     return (
-        <footer className="pt-4 pb-4">
+        <footer className="pt-4 pb-4 custom-frame">
             <div className="container">
                 <div className="row align-items-center mb-4">
                     <motion.div

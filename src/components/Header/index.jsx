@@ -43,6 +43,7 @@ export default function Header() {
             setLightMode(tempLightMode);
             let rootElement = document.documentElement;
             rootElement.style.setProperty("--main-color-one", tempLightMode === "sunny" ? process.env.MAIN_COLOR_ONE : "#000");
+            rootElement.style.setProperty("--main-color-five", tempLightMode === "sunny" ? process.env.MAIN_COLOR_FIVE : "#FFF");
         }
     }, []);
 
@@ -101,6 +102,7 @@ export default function Header() {
         setLightMode(newLightMode);
         let rootElement = document.documentElement;
         rootElement.style.setProperty("--main-color-one", newLightMode === "sunny" ? process.env.MAIN_COLOR_ONE : "#000");
+        rootElement.style.setProperty("--main-color-five", newLightMode === "sunny" ? process.env.MAIN_COLOR_FIVE : "#FFF");
         localStorage.setItem(process.env.USER_THEME_MODE_FIELD_NAME_IN_LOCAL_STORAGE, newLightMode);
     }
 
@@ -164,7 +166,7 @@ export default function Header() {
 
     return (
         <header className="global-header">
-            <Navbar expand="lg" className="bg-body-tertiary pb-1 pt-1" fixed="top">
+            <Navbar expand="lg" className="bg-body-tertiary pb-1 pt-1 custom-frame" fixed="top">
                 <Container fluid>
                     <Navbar.Brand href="/" as={Link}>
                         <img src={ubuybluesLogo.src} alt="ubuyblues logo for header" className="ubuyblues-logo" width="70" height="70" />
