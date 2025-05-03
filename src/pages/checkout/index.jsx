@@ -18,7 +18,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import FormFieldErrorBox from "@/components/FormFieldErrorBox";
 import { LiaCcVisa } from "react-icons/lia";
-import { SiApplepay } from "react-icons/si";
+import { SiAmericanexpress, SiApplepay } from "react-icons/si";
 
 export default function Checkout({ countryAsProperty, storeId }) {
 
@@ -107,6 +107,10 @@ export default function Checkout({ countryAsProperty, storeId }) {
                 {
                     name: "Apple Pay Card",
                     icon: <SiApplepay className={`payment-icon apple-pay-card-icon me-3`} />
+                },
+                {
+                    name: "American Express Card",
+                    icon: <SiAmericanexpress className={`payment-icon apple-pay-card-icon me-3`} />
                 },
             ],
         }

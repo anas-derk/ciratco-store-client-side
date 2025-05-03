@@ -10,7 +10,7 @@ import { MdEmail } from "react-icons/md";
 import axios from "axios";
 import { getAnimationSettings, getInitialStateForElementBeforeAnimation, handleSelectUserLanguage } from "../../../public/global_functions/popular";
 import { motion } from "motion/react";
-import { SiApplepay } from "react-icons/si";
+import { SiAmericanexpress, SiApplepay } from "react-icons/si";
 
 export default function Footer() {
 
@@ -44,6 +44,10 @@ export default function Footer() {
         {
             name: "Apple Pay Card",
             icon: <SiApplepay className={`icon apple-pay-card-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
+        },
+        {
+            name: "American Express Card",
+            icon: <SiAmericanexpress className={`icon apple-pay-card-icon ${i18n.language !== "ar" ? "me-2" : "ms-2"}`} />
         }
     ];
 
