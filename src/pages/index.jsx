@@ -758,6 +758,7 @@ export default function Home({ countryAsProperty, storeId }) {
                                         speed={500}
                                         slidesToShow={getAppearedSlidesCount(windowInnerWidth, allImageAds.length)}
                                         slidesToScroll={getAppearedSlidesCount(windowInnerWidth, allImageAds.length)}
+                                        autoplay={true}
                                     >
                                         {allImageAds.map((ad) => (
                                             <motion.div
