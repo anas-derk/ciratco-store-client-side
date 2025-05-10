@@ -647,7 +647,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                         className={`p-2 ${formValidationErrors.firstName_for_billing_address ? "border-3 border-danger mb-3" : ""}`}
                                                         placeholder={t("Please Enter First Name Here")}
                                                         defaultValue={userInfo ? userInfo.billingAddress.firstName : ""}
-                                                        onChange={(e) => { setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, firstName: e.target.value.trim() } }); }}
+                                                        onChange={(e) => setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, firstName: e.target.value.trim() } })}
                                                     />
                                                     {formValidationErrors.firstName_for_billing_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.firstName_for_billing_address)} />}
                                                 </div>
@@ -658,7 +658,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                         className={`p-2 ${formValidationErrors.last_name_for_billing_address ? "border-3 border-danger mb-3" : ""}`}
                                                         placeholder={t("Please Enter Last Name Here")}
                                                         defaultValue={userInfo ? userInfo.billingAddress.lastName : ""}
-                                                        onChange={(e) => { setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, lastName: e.target.value.trim() } }); }}
+                                                        onChange={(e) => setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, lastName: e.target.value.trim() } })}
                                                     />
                                                     {formValidationErrors.last_name_for_billing_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.last_name_for_billing_address)} />}
                                                 </div>
@@ -671,7 +671,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className="p-2"
                                                 placeholder={t("Please Enter Company Name Here")}
                                                 defaultValue={userInfo ? userInfo.billingAddress.companyName : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, companyName: e.target.value.trim() } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, companyName: e.target.value.trim() } })}
                                             />
                                         </motion.section>
                                         <motion.section className="country mb-4" initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
@@ -699,7 +699,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className={`p-2 ${formValidationErrors.street_address_for_billing_address ? "border-3 border-danger mb-3" : ""}`}
                                                 placeholder={t("Please Enter Street Address / Neighborhood Here")}
                                                 defaultValue={userInfo ? userInfo.billingAddress.streetAddress : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, streetAddress: e.target.value.trim() } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, streetAddress: e.target.value.trim() } })}
                                             />
                                             {formValidationErrors.street_address_for_billing_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.street_address_for_billing_address)} />}
                                         </motion.section>
@@ -710,7 +710,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className="p-2"
                                                 placeholder={t("Please Enter Apartment Number, Ward, Unit, Etc Here")}
                                                 defaultValue={userInfo ? userInfo.billingAddress.apartmentNumber : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, apartmentNumber: e.target.value } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, apartmentNumber: e.target.value } })}
                                             />
                                         </motion.section>
                                         <motion.section className="city-number mb-4" initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
@@ -720,7 +720,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className={`p-2 ${formValidationErrors.city_for_billing_address ? "border-3 border-danger mb-3" : ""}`}
                                                 placeholder={t("Please Enter City Name Here")}
                                                 defaultValue={userInfo ? userInfo.billingAddress.city : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, city: e.target.value.trim() } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, city: e.target.value.trim() } })}
                                             />
                                             {formValidationErrors.city_for_billing_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.city_for_billing_address)} />}
                                         </motion.section>
@@ -731,7 +731,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className={`p-2 ${formValidationErrors.postal_code_for_billing_address ? "border-3 border-danger mb-3" : ""}`}
                                                 placeholder={t("Please Enter Postal Code / Zip Here")}
                                                 defaultValue={userInfo ? userInfo.billingAddress.postalCode : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, postalCode: e.target.value } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, postalCode: e.target.value } })}
                                             />
                                             {formValidationErrors.postal_code_for_billing_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.postal_code_for_billing_address)} />}
                                         </motion.section>
@@ -752,7 +752,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                         className={`p-2 ${formValidationErrors.phone_number_for_billing_address ? "border-3 border-danger mb-3" : ""}`}
                                                         placeholder={t("Please Enter Phone Number")}
                                                         defaultValue={userInfo ? getPhoneNumberFromString(userInfo.billingAddress.phoneNumber, userInfo.billingAddress.country) : ""}
-                                                        onChange={(e) => { setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, phoneNumber: e.target.value } }); }}
+                                                        onChange={(e) => setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, phoneNumber: e.target.value } })}
                                                     />
                                                 </div>
                                             </div>
@@ -765,7 +765,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className={`p-2 ${formValidationErrors.email_for_billing_address ? "border-3 border-danger mb-3" : ""}`}
                                                 placeholder={t("Please Enter Email Here")}
                                                 defaultValue={userInfo ? userInfo.billingAddress.email : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, email: e.target.value.trim() } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, billingAddress: { ...userInfo.billingAddress, email: e.target.value.trim() } })}
                                             />
                                             {formValidationErrors.email_for_billing_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.email_for_billing_address)} />}
                                         </motion.section>
@@ -803,7 +803,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                         className={`p-2 ${formValidationErrors.first_name_for_shipping_address ? "border-3 border-danger mb-3" : ""}`}
                                                         placeholder={t("Please Enter First Name Here")}
                                                         defaultValue={userInfo ? userInfo.shippingAddress.firstName : ""}
-                                                        onChange={(e) => { setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, firstName: e.target.value.trim() } }); }}
+                                                        onChange={(e) => setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, firstName: e.target.value.trim() } })}
                                                     />
                                                     {formValidationErrors.first_name_for_shipping_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.first_name_for_shipping_address)} />}
                                                 </div>
@@ -814,7 +814,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                         className={`p-2 ${formValidationErrors.last_name_for_shipping_address ? "border-3 border-danger mb-3" : ""}`}
                                                         placeholder={t("Please Enter Last Name Here")}
                                                         defaultValue={userInfo ? userInfo.shippingAddress.lastName : ""}
-                                                        onChange={(e) => { setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, lastName: e.target.value.trim() } }); }}
+                                                        onChange={(e) => setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, lastName: e.target.value.trim() } })}
                                                     />
                                                     {formValidationErrors.last_name_for_shipping_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.last_name_for_shipping_address)} />}
                                                 </div>
@@ -827,7 +827,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className="p-2"
                                                 placeholder={t("Please Enter Company Name Here")}
                                                 defaultValue={userInfo ? userInfo.shippingAddress.companyName : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, companyName: e.target.value.trim() } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, companyName: e.target.value.trim() } })}
                                             />
                                         </motion.section>
                                         <motion.section className="country mb-4" initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
@@ -855,7 +855,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className={`p-2 ${formValidationErrors.street_address_for_shipping_address ? "border-3 border-danger mb-3" : ""}`}
                                                 placeholder={t("Please Enter Street Address / Neighborhood Here")}
                                                 defaultValue={userInfo ? userInfo.shippingAddress.streetAddress : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, streetAddress: e.target.value.trim() } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, streetAddress: e.target.value.trim() } })}
                                             />
                                             {formValidationErrors.street_address_for_shipping_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.street_address_for_shipping_address)} />}
                                         </motion.section>
@@ -866,7 +866,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className="p-2"
                                                 placeholder={t("Please Enter Apartment Number, Ward, Unit, Etc Here")}
                                                 defaultValue={userInfo ? userInfo.shippingAddress.apartmentNumber.toString() : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, apartmentNumber: e.target.value } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, apartmentNumber: e.target.value } })}
                                             />
                                         </motion.section>
                                         <motion.section className="city-number mb-4" initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
@@ -876,7 +876,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className={`p-2 ${formValidationErrors.city_for_shipping_address ? "border-3 border-danger mb-3" : ""}`}
                                                 placeholder={t("Please Enter City Name Here")}
                                                 defaultValue={userInfo ? userInfo.shippingAddress.city : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, city: e.target.value.trim() } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, city: e.target.value.trim() } })}
                                             />
                                             {formValidationErrors.city_for_shipping_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.city_for_shipping_address)} />}
                                         </motion.section>
@@ -887,7 +887,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className={`p-2 ${formValidationErrors.postal_code_for_shipping_address ? "border-3 border-danger mb-3" : ""}`}
                                                 placeholder="Please Enter Postal Code / Zip Here"
                                                 defaultValue={userInfo ? userInfo.shippingAddress.postalCode.toString() : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, postalCode: e.target.value } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, postalCode: e.target.value } })}
                                             />
                                             {formValidationErrors.postal_code_for_shipping_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.postal_code_for_shipping_address)} />}
                                         </motion.section>
@@ -908,7 +908,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                         className={`p-2 ${formValidationErrors.phone_number_for_shipping_address ? "border-3 border-danger mb-3" : ""}`}
                                                         placeholder={t("Please Enter Phone Number Here")}
                                                         defaultValue={userInfo ? getPhoneNumberFromString(userInfo.shippingAddress.phoneNumber, userInfo.shippingAddress.country) : ""}
-                                                        onChange={(e) => { setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, phoneNumber: e.target.value } }); }}
+                                                        onChange={(e) => setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, phoneNumber: e.target.value } })}
                                                     />
                                                 </div>
                                             </div>
@@ -921,7 +921,7 @@ export default function Checkout({ countryAsProperty, storeId }) {
                                                 className={`p-2 ${formValidationErrors.email_for_shipping_address ? "border-3 border-danger mb-3" : ""}`}
                                                 placeholder={t("Please Enter Email Here")}
                                                 defaultValue={userInfo ? userInfo.shippingAddress.email : ""}
-                                                onChange={(e) => { setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, email: e.target.value.trim() } }); }}
+                                                onChange={(e) => setUserInfo({ ...userInfo, shippingAddress: { ...userInfo.shippingAddress, email: e.target.value.trim() } })}
                                             />
                                             {formValidationErrors.email_for_shipping_address && <FormFieldErrorBox errorMsg={t(formValidationErrors.email_for_shipping_address)} />}
                                         </motion.section>

@@ -754,7 +754,7 @@ export default function Home({ countryAsProperty, storeId }) {
                                     <Slider
                                         dots={true}
                                         arrows={false}
-                                        infinite={false}
+                                        infinite={true}
                                         speed={500}
                                         slidesToShow={getAppearedSlidesCount(windowInnerWidth, allImageAds.length)}
                                         slidesToScroll={getAppearedSlidesCount(windowInnerWidth, allImageAds.length)}
