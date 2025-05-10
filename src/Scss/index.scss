@@ -556,9 +556,11 @@ textarea {
 
         &.share-icons-box {
             .row {
-                @media (max-width: 767px) {
-                    gap: 20px;
-                }
+                gap: 20px;
+            }
+
+            button {
+                border: none !important;
             }
         }
 

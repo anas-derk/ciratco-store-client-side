@@ -610,10 +610,12 @@ textarea {
     height: 60%
 }
 
-@media (max-width: 767px) {
-    .popup-box .content-box.share-icons-box .row {
-        gap: 20px
-    }
+.popup-box .content-box.share-icons-box .row {
+    gap: 20px
+}
+
+.popup-box .content-box.share-icons-box button {
+    border: none !important
 }
 
 .popup-box .content-box .login-btn {
