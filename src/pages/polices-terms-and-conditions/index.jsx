@@ -47,7 +47,7 @@ export default function PolicesTermsAndConditions() {
     }, []);
 
     return (
-        <div className="privacy-policy-and-conditions caption-page page pt-5">
+        <div className="privacy-policy-and-conditions caption-page page pt-5 overflow-auto">
             <Head>
                 <title>{t(process.env.STORE_NAME)} - {t("Polices Terms And Conditions")}</title>
             </Head>
