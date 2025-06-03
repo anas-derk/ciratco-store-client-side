@@ -7,7 +7,7 @@ import { FaRegSmileWink } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import Footer from "@/components/Footer";
 import { getStoreDetails, getUserInfo, getOrderDetails, handleSelectUserLanguage } from "../../../../public/global_functions/popular";
-import { getCurrencyNameByCountry, getUSDPriceAgainstCurrency } from "../../../../public/global_functions/prices";
+import { getCurrencyNameByCountry, getBaseCurrencyPriceAgainstCurrency } from "../../../../public/global_functions/prices";
 import NotFoundError from "@/components/NotFoundError";
 
 export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
@@ -16,7 +16,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
 
     const [errorMsgOnLoadingThePage, setErrorMsgOnLoadingThePage] = useState("");
 
-    const [usdPriceAgainstCurrency, setUsdPriceAgainstCurrency] = useState(1);
+    const [convertedPrice, setConvertedPrice] = useState(1);
 
     const [currencyNameByCountry, setCurrencyNameByCountry] = useState("");
 
@@ -37,10 +37,10 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
 
     useEffect(() => {
         setIsLoadingPage(true);
-        getUSDPriceAgainstCurrency(countryAsProperty).then((price) => {
-            setUsdPriceAgainstCurrency(price);
-            const selectedCountry = localStorage.getItem(process.env.SELECTED_COUNTRY_BY_USER);
-            setCurrencyNameByCountry(getCurrencyNameByCountry(countryAsProperty === selectedCountry ? countryAsProperty : (selectedCountry ?? countryAsProperty)));
+        const selectedCountry = localStorage.getItem(process.env.SELECTED_COUNTRY_BY_USER) ?? countryAsProperty;
+        getBaseCurrencyPriceAgainstCurrency(selectedCountry).then((price) => {
+            setConvertedPrice(price);
+            setCurrencyNameByCountry(getCurrencyNameByCountry(selectedCountry));
             if (!isGetUserInfo && !isGetOrderDetails) {
                 setIsLoadingPage(false);
             }
@@ -143,13 +143,13 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
                                         </span>}
                                     </div>
                                     <div className="col-md-3 fw-bold p-0">
-                                        {(product.unitPrice * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}
+                                        {(product.unitPrice * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}
                                     </div>
                                     <div className="col-md-3 fw-bold p-0">
-                                        {(product.unitDiscount * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}
+                                        {(product.unitDiscount * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}
                                     </div>
                                     <div className="col-md-3 fw-bold p-0">
-                                        {((product.unitPrice - product.unitDiscount) * product.quantity * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}
+                                        {((product.unitPrice - product.unitDiscount) * product.quantity * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}
                                     </div>
                                 </div>
                             ))}
@@ -158,7 +158,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
                                     {t("Total Price Before Discount")}
                                 </div>
                                 <div className={`col-md-9 fw-bold p-0 ${i18n.language !== "ar" ? "text-md-end" : "text-md-start"}`}>
-                                    {(orderDetails.totalPriceBeforeDiscount * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}
+                                    {(orderDetails.totalPriceBeforeDiscount * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}
                                 </div>
                             </div>
                             <div className="row total-price-discount total pb-3 mb-5">
@@ -166,7 +166,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
                                     {t("Total Discount")}
                                 </div>
                                 <div className={`col-md-9 fw-bold p-0 ${i18n.language !== "ar" ? "text-md-end" : "text-md-start"}`}>
-                                    {(orderDetails.totalDiscount * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}
+                                    {(orderDetails.totalDiscount * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}
                                 </div>
                             </div>
                             <div className="row shipping-cost-for-local-products total pb-3 mb-5">
@@ -174,7 +174,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
                                     {t("Shipping Cost For Local Products")}
                                 </div>
                                 <div className={`col-md-9 fw-bold p-0 ${i18n.language !== "ar" ? "text-md-end" : "text-md-start"}`}>
-                                    {(orderDetails.shippingCost.forLocalProducts * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}
+                                    {(orderDetails.shippingCost.forLocalProducts * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}
                                 </div>
                             </div>
                             <div className="row shipping-cost-for-international-products total pb-3 mb-5">
@@ -182,7 +182,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
                                     {t("Shipping Cost For International Products")}
                                 </div>
                                 <div className={`col-md-9 fw-bold p-0 ${i18n.language !== "ar" ? "text-md-end" : "text-md-start"}`}>
-                                    {(orderDetails.shippingCost.forInternationalProducts * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}
+                                    {(orderDetails.shippingCost.forInternationalProducts * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}
                                 </div>
                             </div>
                             <div className="row total-shipping-cost total pb-3 mb-5">
@@ -190,7 +190,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
                                     {t("Total Shipping Cost")}
                                 </div>
                                 <div className={`col-md-9 fw-bold p-0 ${i18n.language !== "ar" ? "text-md-end" : "text-md-start"}`}>
-                                    {((orderDetails.shippingCost.forLocalProducts + orderDetails.shippingCost.forInternationalProducts) * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}
+                                    {((orderDetails.shippingCost.forLocalProducts + orderDetails.shippingCost.forInternationalProducts) * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}
                                 </div>
                             </div>
                             <div className="row total-price-after-discount total pb-3 mb-5">
@@ -198,7 +198,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
                                     {t("Total Price After Discount")}
                                 </div>
                                 <div className={`col-md-9 fw-bold p-0 ${i18n.language !== "ar" ? "text-md-end" : "text-md-start"}`}>
-                                    {(orderDetails.totalPriceAfterDiscount * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}
+                                    {(orderDetails.totalPriceAfterDiscount * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}
                                 </div>
                             </div>
                             <div className="row total-amount total pb-3 mb-5">
@@ -206,7 +206,7 @@ export default function Confirmation({ orderIdAsProperty, countryAsProperty }) {
                                     {t("Total Amount")}
                                 </div>
                                 <div className={`col-md-9 fw-bold p-0 ${i18n.language !== "ar" ? "text-md-end" : "text-md-start"}`}>
-                                    {(orderDetails.orderAmount * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}
+                                    {(orderDetails.orderAmount * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}
                                 </div>
                             </div>
                             <div className="thanks-icon-box mb-4">
@@ -239,7 +239,7 @@ export async function getServerSideProps({ query, params }) {
                 destination: "/",
             },
             props: {
-                countryAsProperty: "kuwait",
+                countryAsProperty: process.env.BASE_COUNTRY,
             },
         }
     }
@@ -252,7 +252,7 @@ export async function getServerSideProps({ query, params }) {
                     destination: `/confirmation/${params.id}`,
                 },
                 props: {
-                    countryAsProperty: "kuwait",
+                    countryAsProperty: process.env.BASE_COUNTRY,
                     orderIdAsProperty: params.id,
                 },
             }
@@ -278,7 +278,7 @@ export async function getServerSideProps({ query, params }) {
     }
     return {
         props: {
-            countryAsProperty: "kuwait",
+            countryAsProperty: process.env.BASE_COUNTRY,
             orderIdAsProperty: params.id,
         },
     }

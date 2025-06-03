@@ -12,7 +12,7 @@ import ErrorOnLoadingThePage from "@/components/ErrorOnLoadingThePage";
 import { useTranslation } from "react-i18next";
 import PaginationBar from "@/components/PaginationBar";
 import Footer from "@/components/Footer";
-import { getCurrencyNameByCountry, getUSDPriceAgainstCurrency } from "../../../../public/global_functions/prices";
+import { getCurrencyNameByCountry, getBaseCurrencyPriceAgainstCurrency } from "../../../../public/global_functions/prices";
 import { getAnimationSettings, getInitialStateForElementBeforeAnimation, getUserInfo, handleSelectUserLanguage } from "../../../../public/global_functions/popular";
 import NotFoundError from "@/components/NotFoundError";
 import SectionLoader from "@/components/SectionLoader";
@@ -26,7 +26,7 @@ export default function CustomerWalletProductsList({ countryAsProperty }) {
 
     const [errorMsgOnLoadingThePage, setErrorMsgOnLoadingThePage] = useState("");
 
-    const [usdPriceAgainstCurrency, setUsdPriceAgainstCurrency] = useState(1);
+    const [convertedPrice, setConvertedPrice] = useState(1);
 
     const [currencyNameByCountry, setCurrencyNameByCountry] = useState("");
 
@@ -69,9 +69,10 @@ export default function CustomerWalletProductsList({ countryAsProperty }) {
 
     useEffect(() => {
         setIsLoadingPage(true);
-        getUSDPriceAgainstCurrency(countryAsProperty).then((price) => {
-            setUsdPriceAgainstCurrency(price);
-            setCurrencyNameByCountry(getCurrencyNameByCountry(countryAsProperty));
+        const selectedCountry = localStorage.getItem(process.env.SELECTED_COUNTRY_BY_USER) ?? countryAsProperty;
+        getBaseCurrencyPriceAgainstCurrency(selectedCountry).then((price) => {
+            setConvertedPrice(price);
+            setCurrencyNameByCountry(getCurrencyNameByCountry(selectedCountry));
             if (!isGetWalletProducts) {
                 setIsLoadingPage(false);
             }
@@ -297,7 +298,7 @@ export default function CustomerWalletProductsList({ countryAsProperty }) {
                                                         />
                                                         <h6>{walletProduct.name[i18n.language]}</h6>
                                                     </td>
-                                                    <td>{(walletProduct.price * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}</td>
+                                                    <td>{(walletProduct.price * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}</td>
                                                     <td>
                                                         {!waitMsg && selectedWalletProduct !== walletProductIndex && <BsTrash className="delete-product-from-wallet-user-list-icon managment-wallet-products-icon" onClick={() => deleteProductFromUserProductsWallet(walletProductIndex)} />}
                                                         {waitMsg && selectedWalletProduct === walletProductIndex && <BsClock className="wait-delete-product-from-wallet-user-list-icon managment-wallet-products-icon" />}
@@ -331,7 +332,7 @@ export default function CustomerWalletProductsList({ countryAsProperty }) {
                                                         </motion.tr>
                                                         <motion.tr initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
                                                             <th>{t("Unit Price")}</th>
-                                                            <td>{(walletProduct.price * usdPriceAgainstCurrency).toFixed(2)} {t(currencyNameByCountry)}</td>
+                                                            <td>{(walletProduct.price * convertedPrice).toFixed(2)} {t(currencyNameByCountry)}</td>
                                                         </motion.tr>
                                                         <motion.tr initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>
                                                             <th>{t("Action")}</th>
@@ -390,7 +391,7 @@ export async function getServerSideProps({ query }) {
                     destination: "/",
                 },
                 props: {
-                    countryAsProperty: "kuwait",
+                    countryAsProperty: process.env.BASE_COUNTRY,
                 },
             }
         }
@@ -413,7 +414,7 @@ export async function getServerSideProps({ query }) {
     }
     return {
         props: {
-            countryAsProperty: "kuwait",
+            countryAsProperty: process.env.BASE_COUNTRY,
         },
     }
 }

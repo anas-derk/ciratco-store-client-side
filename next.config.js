@@ -15,6 +15,7 @@ const nextConfig = {
         USER_CART_NAME_IN_LOCAL_STORAGE: "ciratco-store-customer-cart",
         USER_THEME_MODE_FIELD_NAME_IN_LOCAL_STORAGE: "ciratco-store-light-mode",
         REFERAL_WRITER_FIELD_NAME_IN_LOCAL_STORAGE: "ciratco-store-referal-writer-info",
+        BASE_COUNTRY: "germany",
         SELECTED_COUNTRY_BY_USER: "ciratco-store-country",
         CONTACT_NUMBER: "4915563191873",
         CONTACT_EMAIL: "info@ciratco.com",
@@ -24,7 +25,7 @@ const nextConfig = {
         WEBSITE_NAME: "Ciratco",
         WEBSITE_DASHBOARD_URL: process.env.NODE_ENV === "development" ? "http://localhost:3001" : "https://dashboard.ciratco.com",
         MAIN_COLOR_ONE: "#1b405a",
-        MAIN_COLOR_FIVE: "#000"
+        MAIN_COLOR_FIVE: "#000",
     },
     async headers() {
         return [
