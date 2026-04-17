@@ -228,6 +228,11 @@ export default function PolicesTermsAndConditions() {
                                     <motion.li className="mb-4" initial={getInitialStateForElementBeforeAnimation()} whileInView={getAnimationSettings}>{t("(If you want to withdraw from the contract, please fill out this form and send it back)")}</motion.li>
                                 </ul>
                             </ol>
+                            <motion.h2
+                                className="fw-bold h4 border-bottom border-2 w-fit pb-2"
+                                initial={getInitialStateForElementBeforeAnimation()}
+                                whileInView={getAnimationSettings}
+                            >{t("The Platform reserves the right to amend, update, or change any part of the Terms of Use or Privacy Policy at any time at its sole discretion. Such modifications shall become effective immediately upon posting on the Website. Your continued use of the Platform following any changes constitutes your implicit consent to the modified terms. Therefore, please review this page periodically to stay informed of any updates")}</motion.h2>
                         </div>
                     </div>
                 </div>
